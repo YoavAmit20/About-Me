@@ -1,0 +1,74 @@
+body {
+	background-color: #0AAAFD;
+	font-family: Arial;
+	direction: ltr;
+}  
+img {
+   border: 5px solid #1777B1;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+   height: auto;
+} 
+#menu nav {	
+	height: 80px;
+	margin: auto;
+			
+}
+#menu li {	
+	display: inline;	
+		
+}
+#menu a {
+	float: left;
+	width: 16%;
+	height: 70px;
+	background-color:aqua;	
+	border-left: 2px solid #1777B1;
+	text-decoration: none;	
+	text-align: center;
+	font-size: 136%;
+}
+#menu a:hover {
+	background-color: bisque;	
+}
+#page {
+	width: 50%;	
+	margin: auto;
+	font-size: 20px;		
+}
+
+input[type=text], textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+
+input[type=submit] {
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+	#menu a {
+		width: 100%; /* The width is 100%, when the viewport is 850px or smaller */
+		border-bottom: 2px solid #1777B1; 
+	}
+  }
+
+
+
+
+
+
+
+
+

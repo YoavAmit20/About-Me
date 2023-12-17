@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact form | Yoav Amit</title>
+    <link href="default.css" rel="stylesheet" type="text/css" />
+	<meta charset="UTF-8">
+	<meta name="description" content="Contact">
+	<meta name="keywords" content="name,phone,message">
+	<meta name="author" content="Yoav Amit">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+</head>
+<body>
+<div id="menu">
+	<nav>	
+		<ol>
+			<li><a style="font-size: 200%;">Yoav Amit</a></li>	
+			<li><a href="About.html">About me</a></li>
+			<li><a href="Education.html">Education</a></li>	
+			<li><a href="Employment.html">Employment</a></li> 
+			<li><a href="Hobbies.html">Hobbies</a></li> 
+			<li><a href="Contact.html">Contact form</a></li>
+		</ol>	      	  		      
+	</nav>
+</div>
+<div id="page">	
+    <form id="form1" onsubmit = "return check_ok();">
+	<table width = "100%" cellpadding = "10">
+	<tr>	
+	<td><label for="name">full name:</label></td><td><input type = "text" name = "name" id = "name" /></td>
+	<td><p id="namemsg"></p></td>
+	</tr>	
+	<tr>
+	<td ><label for="phone">phone:</label></td><td><input type = "text" name = "phone" id = "phone" /></td>
+	<td><p id="phonemsg"></p></td>
+	</tr>	
+	<tr>
+	<td><label for="message">message:</label></td><td><textarea id="message" name="message" style="height:200px"></textarea></td>
+	<td><p id="messagemsg"></p></td>
+	</tr>
+	</table>
+	<input type = "submit" name = "submit" id = "submit" value = "send email"/>
+	</form>  
+</div>
+
+<script type = "text/javascript">	
+
+	function check_ok()
+	{
+		let name = check_name();
+		let phone = check_phone();
+		let message = check_message();	
+		let allValid = name && phone && message;
+		if (allValid)
+		{
+			const name = document.querySelector("#name").value;
+			const phone = document.querySelector("#phone").value;
+			const message = document.querySelector("#message").value;
+			let url = "mailto:yoavamit5079@gmail.com?subject=Contact&body=" + message + "%0AThanks,%20" + name + ",%20" + phone;
+			window.location.href = url;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+
+	function check_name() {		
+		//check if the name field is valid
+		let name = document.getElementById('name').value;
+		let allowd_letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ- ";
+		let cnt = 0;
+		for (let i = 0; i < name.length; i++) {
+			for (let j = 0; j < allowd_letters.length; j++) {
+				if (name.charAt(i) == allowd_letters.charAt(j)) {
+					cnt = cnt + 1;
+				}
+			}
+		}
+		if (name == "") {
+			document.getElementById("namemsg").innerHTML = "The name field is empty";			
+			return false;
+		}		
+
+		if (cnt < name.length) {
+			document.getElementById("namemsg").innerHTML = "The name is not valid. Note that you are writing in English";			
+			return false;
+		}
+
+		document.getElementById("namemsg").innerHTML = "";
+		return true;	
+	}	
+
+	function check_phone() {
+		//check if the phone field is valid
+		let phone = document.getElementById('phone').value;
+		if (phone == "") {
+			document.getElementById("phonemsg").innerHTML = "The phone field is empty";			
+			return false;
+		}					
+		for (let i = 0; i < phone.length; i++) {
+			if (!(phone.charAt(i) >= 0 && phone.charAt(i) <= 9)) {
+				document.getElementById("phonemsg").innerHTML = "The number is not valid. Note that you only use numbers";				
+				return false;
+			}
+		}
+		if (phone.length != 10)	
+		{
+			document.getElementById("phonemsg").innerHTML = "The number length is not valid";
+			return false;
+
+		}
+		if (phone.charAt(0) != 0) {
+			document.getElementById("phonemsg").innerHTML = "The number does not start with 0";			
+			return false;
+		}
+		document.getElementById("phonemsg").innerHTML = "";	
+		return true;
+	}
+
+	function check_message()
+	{
+		//check if the message field is valid		
+		let message = document.getElementById('message').value;
+		if (message == "") {
+			document.getElementById("messagemsg").innerHTML = "The message field is empty";			
+			return false;
+		}
+		document.getElementById("messagemsg").innerHTML = "";
+		return true;	
+	}	
+		
+	
+</script>   
+</body>
+</html>
